@@ -9,7 +9,8 @@
   "license": "MIT",
   "ignore": [],
   "dependencies": {
-    "angular": "master"
+    "angular": "master",
+    "angular-material": "master"
   },
   "devDependencies": {
     "angular": "master"

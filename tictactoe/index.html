@@ -3,10 +3,74 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Jogo da Velha</title>
+		
+		<!-- JS LIBS -->
 		<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+		<script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-aria/angular-aria.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-material/angular-material.min.js"></script>
+		
+		<!-- CSS LIBS -->
+		<link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+
+
+		<!-- MODULES -->
 		<script type="text/javascript" src="app.js"></script>
+
 	</head>
 
-	<body ng-controller='AppCtrl'>
+	<body ng-controller='AppCtrl' layout="column" layout-align="center center">
+		<h1 ng-if="winner=='player'">Você venceu!</h1>
+		<h1 ng-if="winner=='computer'">O computador venceu!</h1>		
+
+		<div layout="row">
+			<md-button ng-click="updateGame(0,0,'X')" class="md-fab md-primary md-raised">
+        		<md-icon ng-if="game[0][0]=='X'" md-svg-src="img/close.svg"></md-icon>
+	        	<md-icon ng-if="game[0][0]=='O'" md-svg-src="img/circle-o.svg"></md-icon>
+	        </md-button>
+			<md-button ng-click="updateGame(0,1,'X')" class="md-fab md-primary md-raised">
+        		<md-icon ng-if="game[0][1]=='X'" md-svg-src="img/close.svg"></md-icon>
+	        	<md-icon ng-if="game[0][1]=='O'" md-svg-src="img/circle-o.svg"></md-icon>
+	        </md-button>
+	        <md-button ng-click="updateGame(0,2,'X')" class="md-fab md-primary md-raised">
+        		<md-icon ng-if="game[0][2]=='X'" md-svg-src="img/close.svg"></md-icon>
+	        	<md-icon ng-if="game[0][2]=='O'" md-svg-src="img/circle-o.svg"></md-icon>
+	        </md-button>
+		</div>
+
+		<div layout="row">
+			<md-button ng-click="updateGame(1,0,'X')" class="md-fab md-primary md-raised">
+        		<md-icon ng-if="game[1][0]=='X'" md-svg-src="img/close.svg"></md-icon>
+	        	<md-icon ng-if="game[1][0]=='O'" md-svg-src="img/circle-o.svg"></md-icon>
+	        </md-button>
+			<md-button ng-click="updateGame(1,1,'X')" class="md-fab md-primary md-raised">
+        		<md-icon ng-if="game[1][1]=='X'" md-svg-src="img/close.svg"></md-icon>
+	        	<md-icon ng-if="game[1][1]=='O'" md-svg-src="img/circle-o.svg"></md-icon>
+	        </md-button>
+	        <md-button ng-click="updateGame(1,2,'X')" class="md-fab md-primary md-raised">
+        		<md-icon ng-if="game[1][2]=='X'" md-svg-src="img/close.svg"></md-icon>
+	        	<md-icon ng-if="game[1][2]=='O'" md-svg-src="img/circle-o.svg"></md-icon>
+	        </md-button>
+		</div>
+
+		<div layout="row">
+			<md-button ng-click="updateGame(2,0,'X')" class="md-fab md-primary md-raised">
+        		<md-icon ng-if="game[2][0]=='X'" md-svg-src="img/close.svg"></md-icon>
+	        	<md-icon ng-if="game[2][0]=='O'" md-svg-src="img/circle-o.svg"></md-icon>
+	        </md-button>
+			<md-button ng-click="updateGame(2,1,'X')" class="md-fab md-primary md-raised">
+        		<md-icon ng-if="game[2][1]=='X'" md-svg-src="img/close.svg"></md-icon>
+	        	<md-icon ng-if="game[2][1]=='O'" md-svg-src="img/circle-o.svg"></md-icon>
+	        </md-button>
+	        <md-button ng-click="updateGame(2,2,'X')" class="md-fab md-primary md-raised">
+        		<md-icon ng-if="game[2][2]=='X'" md-svg-src="img/close.svg"></md-icon>
+	        	<md-icon ng-if="game[2][2]=='O'" md-svg-src="img/circle-o.svg"></md-icon>
+	        </md-button>
+		</div>
+
+		<div layout="column" style="margin-top: 30px;">
+			<md-button ng-click="resetGame()" class="md-primary md-raised">Reiniciar</md-button>
+		</div>
+		
 	</body>
 </html>

@@ -1,31 +1,25 @@
-angular.module('app', [])
+angular.module('app', ['ngMaterial'])
 
 	.controller('AppCtrl', ['$scope', function($scope){
 		
-		// ROOT
-		$scope.root = {
-			root: true,
-			game: [['','',''],['','',''],['','','']],
-			children: []
-		} 
+		// INITIALZING GAME
+		$scope.game = [['','',''],['','',''],['','','']];
 		
 		// FIRST LINE
-		$scope.root.game[0][0] = 'O'; 
-		$scope.root.game[0][1] = '';
-		$scope.root.game[0][2] = '';
+		$scope.game[0][0] = ''; 
+		$scope.game[0][1] = '';
+		$scope.game[0][2] = '';
 
 		// SECOND LINE
-		$scope.root.game[1][0] = 'O';
-		$scope.root.game[1][1] = 'X';
-		$scope.root.game[1][2] = 'X';
+		$scope.game[1][0] = '';
+		$scope.game[1][1] = '';
+		$scope.game[1][2] = '';
 		
 		// THIRD LINE
-		$scope.root.game[2][0] = 'X';
-		$scope.root.game[2][1] = 'O';
-		$scope.root.game[2][2] = '';
-
-		console.log(getBestComputerGame($scope.root));
-		
+		$scope.game[2][0] = '';
+		$scope.game[2][1] = '';
+		$scope.game[2][2] = '';
+			
 		function createChildren(node, char){
 			var children = [];
 			// LINES
@@ -100,7 +94,7 @@ angular.module('app', [])
 			return 'no_winner';
 		}
 
-		function getBestComputerGame(node){
+		function getMinMaxComputerGame(node){
 			createChildren(node, 'O');
 			var bestChield = node.children[0];
 
@@ -108,6 +102,51 @@ angular.module('app', [])
 				if(node.children[i].score > bestChield.score) bestChield = node.children[i];
 			}
 			return bestChield.game;
+		}	
+
+		$scope.updateGame = function(i, j, char){
+			// NODE 
+			var node = {
+				root: true,
+				game: undefined,
+				children: []
+			}
+
+			// USERS GAME
+			$scope.game[i][j] = char;
+			node.game = $scope.game;
+			$scope.winner = getWinner(node);
+			
+			// COMPUTERS GAME
+			setTimeout(function(){
+				$scope.game = getMinMaxComputerGame(node);
+				node.game = $scope.game;
+				$scope.winner = getWinner(node);
+				$scope.$apply();
+			}, 500);
 		}
+
+		$scope.resetGame = function(){
+			// WINNER ALERT
+			$scope.winner = 'no_winner';
+
+			// FIRST LINE
+			$scope.game[0][0] = ''; 
+			$scope.game[0][1] = '';
+			$scope.game[0][2] = '';
+
+			// SECOND LINE
+			$scope.game[1][0] = '';
+			$scope.game[1][1] = '';
+			$scope.game[1][2] = '';
+			
+			// THIRD LINE
+			$scope.game[2][0] = '';
+			$scope.game[2][1] = '';
+			$scope.game[2][2] = '';
+
+			$scope.$apply();
+		}
+
 
 	}]);
