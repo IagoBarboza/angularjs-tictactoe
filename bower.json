@@ -1,0 +1,17 @@
+{
+  "name": "JogoDaVelha",
+  "version": "0.0.1",
+  "homepage": "",
+  "authors": [
+    "Iago Barboza <iagobarboza@gmail.com>"
+  ],
+  "description": "Quanto Gastei",
+  "license": "MIT",
+  "ignore": [],
+  "dependencies": {
+    "angular": "master"
+  },
+  "devDependencies": {
+    "angular": "master"
+  }
+}
